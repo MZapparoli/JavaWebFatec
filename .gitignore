@@ -9,7 +9,6 @@ build.xml
 
 # Java
 *.class
-*.jar
 *.war
 *.ear
 
