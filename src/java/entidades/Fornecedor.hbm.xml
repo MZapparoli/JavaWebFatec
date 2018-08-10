@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2018 13:52:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Fornecedor" table="fornecedor" catalog="basepweb" optimistic-lock="version">
+        <id name="idFornecedor" type="java.lang.Integer">
+            <column name="idFornecedor" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="entidades.Usuario" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="100" />
+        </property>
+        <property name="cnpj" type="string">
+            <column name="cnpj" length="20" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="200" />
+        </property>
+        <set name="compras" table="compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fornecedor" />
+            </key>
+            <one-to-many class="entidades.Compra" />
+        </set>
+        <set name="produtos" table="produto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fornecedor" />
+            </key>
+            <one-to-many class="entidades.Produto" />
+        </set>
+    </class>
+</hibernate-mapping>

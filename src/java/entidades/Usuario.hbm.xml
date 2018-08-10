@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2018 13:52:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Usuario" table="usuario" catalog="basepweb" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="100" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="20" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="32" />
+        </property>
+        <set name="compras" table="compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="entidades.Compra" />
+        </set>
+        <set name="produtos" table="produto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="entidades.Produto" />
+        </set>
+        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="entidades.Fornecedor" />
+        </set>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="entidades.Cliente" />
+        </set>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="entidades.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>

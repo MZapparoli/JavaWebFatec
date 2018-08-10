@@ -1,0 +1,35 @@
+root {
+    display:block;
+}
+body { 
+    background-color: #ffffff;
+    color: #000000;
+   }
+   
+   div.menu{
+       position: absolute;
+       left: 100px;
+       font-size: 30px;
+       color: black;
+   }
+   
+   a:link{
+      font-size: 30px;
+      color: black;
+      border-left: 1px;
+      text-decoration: none;
+      
+   }
+   
+   a:visited{
+      font-size: 30px;
+      color: purple;
+      border-left: 1px;
+      text-decoration: none; 
+   }
+   
+   a:hover{
+       font-size: 30px;
+      color: #DDDDDD;
+      text-decoration: none;
+   }

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2018 13:52:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Venda" table="venda" catalog="basepweb" optimistic-lock="version">
+        <id name="idVenda" type="java.lang.Integer">
+            <column name="idVenda" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="entidades.Cliente" fetch="select">
+            <column name="cliente" />
+        </many-to-one>
+        <many-to-one name="produto" class="entidades.Produto" fetch="select">
+            <column name="produto" />
+        </many-to-one>
+        <many-to-one name="usuario" class="entidades.Usuario" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <property name="precoUnitario" type="java.lang.Double">
+            <column name="precoUnitario" precision="22" scale="0" />
+        </property>
+        <property name="quantidade" type="java.lang.Integer">
+            <column name="quantidade" />
+        </property>
+        <property name="desconto" type="java.lang.Double">
+            <column name="desconto" precision="22" scale="0" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

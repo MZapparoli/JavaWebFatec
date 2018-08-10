@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/06/2018 13:52:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Cliente" table="cliente" catalog="basepweb" optimistic-lock="version">
+        <id name="idCliente" type="java.lang.Integer">
+            <column name="idCliente" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="entidades.Usuario" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="100" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="cpf" length="20" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="200" />
+        </property>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cliente" />
+            </key>
+            <one-to-many class="entidades.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>
